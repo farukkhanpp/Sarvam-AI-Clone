@@ -1,0 +1,1 @@
+import{r}from"./index.DUTUzmOK.js";function c(s=768){const[n,o]=r.useState(!1);return r.useEffect(()=>{const e=window.matchMedia(`(min-width: ${s}px)`),t=()=>o(e.matches);return t(),e.addEventListener("change",t),()=>e.removeEventListener("change",t)},[s]),n}export{c as u};

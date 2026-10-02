@@ -1,0 +1,15 @@
+import{j as m}from"./jsx-runtime.u17CrQMm.js";import{r as h}from"./index.DUTUzmOK.js";import{H as b}from"./HugeiconsIcon.M9kuHKIB.js";const E={gradientTop:"#d2dff9",gradientBottom:"#6a88e2",glowColor:"#556adc"};function g(t,e){const i=t.replace("#",""),r=parseInt(i,16),u=Math.min(255,(r>>16&255)+Math.round(255*e)),a=Math.min(255,(r>>8&255)+Math.round(255*e)),n=Math.min(255,(r&255)+Math.round(255*e));return`#${[u,a,n].map(s=>s.toString(16).padStart(2,"0")).join("")}`}function x(t,e){const i=t.replace("#",""),r=parseInt(i,16),u=Math.max(0,(r>>16&255)-Math.round(255*e)),a=Math.max(0,(r>>8&255)-Math.round(255*e)),n=Math.max(0,(r&255)-Math.round(255*e));return`#${[u,a,n].map(s=>s.toString(16).padStart(2,"0")).join("")}`}const S={"text-sr-indigo-600":"#556adc","text-sr-green-600":"#6ea335","text-sr-orange-600":"#ee7944","text-sr-pink-500":"#b12060"};function M(t){return t.startsWith("#")?t:S[t]??"#556adc"}function y(t){const e=M(t);return{gradientTop:g(e,.58),gradientBottom:g(e,.15),glowColor:x(e,.1)}}function N({icon:t,gradientTop:e,gradientBottom:i,glowColor:r,size:u=28}){const a=h.useRef(null),n=h.useId().replace(/:/g,""),s=`${n}-f`;return h.useEffect(()=>{const c=a.current?.querySelector("svg");if(!c)return;const d="http://www.w3.org/2000/svg";let l=c.querySelector("defs");l||(l=document.createElementNS(d,"defs"),c.prepend(l)),l.innerHTML="";const o=document.createElementNS(d,"linearGradient");o.setAttribute("id",n),o.setAttribute("x1","12"),o.setAttribute("y1","2"),o.setAttribute("x2","12"),o.setAttribute("y2","22"),o.setAttribute("gradientUnits","userSpaceOnUse");const p=document.createElementNS(d,"stop");p.setAttribute("offset","0"),p.setAttribute("stop-color",e);const f=document.createElementNS(d,"stop");f.setAttribute("offset","1"),f.setAttribute("stop-color",i),o.append(p,f),l.append(o),l.insertAdjacentHTML("beforeend",`
+            <filter id="${s}" x="-20%" y="-20%" width="140%" height="140%">
+                <feComponentTransfer in="SourceAlpha" result="invertedAlpha">
+                    <feFuncA type="table" tableValues="1 0"/>
+                </feComponentTransfer>
+                <feGaussianBlur in="invertedAlpha" stdDeviation="5" result="blurredInvert"/>
+                <feComposite in="blurredInvert" in2="SourceAlpha" operator="in" result="innerShadowShape"/>
+                <feFlood flood-color="${r}" flood-opacity="1" result="colorFlood"/>
+                <feComposite in="colorFlood" in2="innerShadowShape" operator="in" result="colorInner"/>
+                <feMerge>
+                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="colorInner"/>
+                </feMerge>
+            </filter>
+        `),c.querySelectorAll("path, circle, rect, ellipse, polygon, polyline").forEach(A=>{A.setAttribute("fill",`url(#${n})`)}),c.setAttribute("filter",`url(#${s})`),c.setAttribute("overflow","visible")},[n,s,e,i,r]),m.jsx("div",{ref:a,className:"w-7 h-7 shrink-0",children:m.jsx(b,{icon:t,size:u,color:"currentColor",strokeWidth:0})})}export{E as A,N as G,y as g};
